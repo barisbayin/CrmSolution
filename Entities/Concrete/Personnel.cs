@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,6 +21,7 @@ namespace Entities.Concrete
         public int? CountyId { get; set; } = null;
         public int? NeighbourhoodId { get; set; } = null;
         public string ZipCode { get; set; } = null;
+        public GenderInformation? genderInformation { get; set; } = null;
         public string ImagePath { get; set; } = null;
         public Department Department { get; set; } = null;
         public bool IsUser { get; set; } = false;

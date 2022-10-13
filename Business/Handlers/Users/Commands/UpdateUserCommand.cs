@@ -44,7 +44,6 @@ namespace Business.Handlers.Users.Commands
                 isThereAnyUser.Notes = request.Notes;
 
                 _userRepository.Update(isThereAnyUser);
-                await _userRepository.SaveChangesAsync();
                 return new SuccessResult(Messages.Updated);
             }
         }

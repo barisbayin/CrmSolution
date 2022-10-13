@@ -58,7 +58,6 @@ namespace Business.Handlers.Authorizations.Commands
                 };
 
                 _userRepository.Add(user);
-                await _userRepository.SaveChangesAsync();
                 return new SuccessResult(Messages.Added);
             }
         }

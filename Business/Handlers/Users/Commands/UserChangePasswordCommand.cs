@@ -43,7 +43,6 @@ namespace Business.Handlers.Users.Commands
                 isThereAnyUser.PasswordSalt = passwordSalt;
 
                 _userRepository.Update(isThereAnyUser);
-                await _userRepository.SaveChangesAsync();
                 return new SuccessResult(Messages.Updated);
             }
         }

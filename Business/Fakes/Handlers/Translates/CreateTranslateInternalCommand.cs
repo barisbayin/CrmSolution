@@ -38,10 +38,9 @@ namespace Business.Fakes.Handlers.Translates
             [CacheRemoveAspect()]
             public async Task<IResult> Handle(CreateTranslateInternalCommand request, CancellationToken cancellationToken)
             {
-                var isThereTranslateRecord = _translateRepository.Query()
-                    .Any(u => u.LangId == request.LangId && u.Code == request.Code);
+                var isThereTranslateRecord = _translateRepository.GetAsync((u => u.LangId == request.LangId && u.Code == request.Code)).Result;
 
-                if (isThereTranslateRecord == true)
+                if (isThereTranslateRecord != null)
                 {
                     return new ErrorResult(Messages.NameAlreadyExist);
                 }
@@ -54,7 +53,6 @@ namespace Business.Fakes.Handlers.Translates
                 };
 
                 _translateRepository.Add(addedTranslate);
-                await _translateRepository.SaveChangesAsync();
                 return new SuccessResult(Messages.Added);
             }
         }

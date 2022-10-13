@@ -99,7 +99,6 @@ namespace Tests.Business.Handlers
             var handler = new CreateTranslateCommandHandler(_translateRepository.Object, _mediator.Object);
             var x = await handler.Handle(command, new CancellationToken());
 
-            _translateRepository.Verify(x => x.SaveChangesAsync());
             x.Success.Should().BeTrue();
             x.Message.Should().Be(Messages.Added);
         }
@@ -149,7 +148,6 @@ namespace Tests.Business.Handlers
             var handler = new UpdateTranslateCommandHandler(_translateRepository.Object, _mediator.Object);
             var x = await handler.Handle(command, new CancellationToken());
 
-            _translateRepository.Verify(x => x.SaveChangesAsync());
             x.Success.Should().BeTrue();
             x.Message.Should().Be(Messages.Updated);
         }
@@ -171,7 +169,6 @@ namespace Tests.Business.Handlers
             var handler = new DeleteTranslateCommandHandler(_translateRepository.Object, _mediator.Object);
             var x = await handler.Handle(command, new CancellationToken());
 
-            _translateRepository.Verify(x => x.SaveChangesAsync());
             x.Success.Should().BeTrue();
             x.Message.Should().Be(Messages.Deleted);
         }

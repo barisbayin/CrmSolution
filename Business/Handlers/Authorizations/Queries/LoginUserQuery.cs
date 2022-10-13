@@ -57,7 +57,6 @@ namespace Business.Handlers.Authorizations.Queries
 
                 user.RefreshToken = accessToken.RefreshToken;
                 _userRepository.Update(user);
-                await _userRepository.SaveChangesAsync();
 
                 _cacheManager.Add($"{CacheKeys.UserIdForClaim}={user.UserId}", claims.Select(x => x.Name));
 

@@ -35,7 +35,6 @@ namespace Business.Handlers.UserGroups.Commands
             {
                 var list = request.UserIds.Select(x => new UserGroup() { GroupId = request.GroupId, UserId = x });
                 await _userGroupRepository.BulkInsertByGroupId(request.GroupId, list);
-                await _userGroupRepository.SaveChangesAsync();
 
                 return new SuccessResult(Messages.Updated);
             }

@@ -33,7 +33,6 @@ namespace Business.Handlers.Users.Commands
 
                 userToDelete.Status = false;
                 _userRepository.Update(userToDelete);
-                await _userRepository.SaveChangesAsync();
                 return new SuccessResult(Messages.Deleted);
             }
         }

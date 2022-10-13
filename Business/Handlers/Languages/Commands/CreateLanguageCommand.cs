@@ -41,9 +41,9 @@ namespace Business.Handlers.Languages.Commands
             [LogAspect(typeof(FileLogger))]
             public async Task<IResult> Handle(CreateLanguageCommand request, CancellationToken cancellationToken)
             {
-                var isThereLanguageRecord = _languageRepository.Query().Any(u => u.Name == request.Name);
+                var isThereLanguageRecord = _languageRepository.GetAsync(u => u.Name == request.Name);
 
-                if (isThereLanguageRecord)
+                if (isThereLanguageRecord != null)
                 {
                     return new ErrorResult(Messages.NameAlreadyExist);
                 }
@@ -55,7 +55,6 @@ namespace Business.Handlers.Languages.Commands
                 };
 
                 _languageRepository.Add(addedLanguage);
-                await _languageRepository.SaveChangesAsync();
                 return new SuccessResult(Messages.Added);
             }
         }

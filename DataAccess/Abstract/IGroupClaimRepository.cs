@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IGroupClaimRepository : IEntityRepository<GroupClaim>
+    public interface IGroupClaimRepository : IEntityRepository<GroupClaim>, IAsyncEntityRepository<GroupClaim>
     {
         Task<IEnumerable<SelectionItem>> GetGroupClaimsSelectedList(int groupId);
         Task BulkInsert(int groupId, IEnumerable<GroupClaim> groupClaims);

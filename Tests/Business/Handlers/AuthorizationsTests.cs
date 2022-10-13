@@ -105,7 +105,6 @@ namespace Tests.Business.Handlers
             _userRepository.Verify(x => x.GetByRefreshToken(It.IsAny<string>()), Times.Once);
             _userRepository.Verify(x => x.GetClaims(It.IsAny<int>()), Times.Once);
             _userRepository.Verify(x => x.Update(It.IsAny<User>()), Times.Once);
-            _userRepository.Verify(x => x.SaveChangesAsync(), Times.Once);
             _tokenHelper.Verify(x => x.CreateToken<AccessToken>(It.IsAny<User>()), Times.Once);
             x.Success.Should().BeTrue();
             x.Message.Should().Be(Messages.SuccessfulLogin);
@@ -129,7 +128,6 @@ namespace Tests.Business.Handlers
 
             _userRepository.Verify(x => x.GetByRefreshToken(It.IsAny<string>()), Times.Once);
             _userRepository.Verify(x => x.Update(It.IsAny<User>()), Times.Never);
-            _userRepository.Verify(x => x.SaveChangesAsync(), Times.Never);
             _tokenHelper.Verify(x => x.CreateToken<AccessToken>(It.IsAny<User>()), Times.Never);
             x.Success.Should().BeFalse();
             x.Message.Should().Be(Messages.UserNotFound);

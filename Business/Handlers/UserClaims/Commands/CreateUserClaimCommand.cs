@@ -40,7 +40,6 @@ namespace Business.Handlers.UserClaims.Commands
                     UserId = request.UserId
                 };
                 _userClaimRepository.Add(userClaim);
-                await _userClaimRepository.SaveChangesAsync();
 
                 _cacheManager.Remove($"{CacheKeys.UserIdForClaim}={request.UserId}");
 

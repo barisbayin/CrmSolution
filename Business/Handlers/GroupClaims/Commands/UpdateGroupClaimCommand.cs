@@ -36,7 +36,7 @@ namespace Business.Handlers.GroupClaims.Commands
                 var list = request.ClaimIds.Select(x => new GroupClaim() { ClaimId = x, GroupId = request.GroupId });
 
                 await _groupClaimRepository.BulkInsert(request.GroupId, list);
-                await _groupClaimRepository.SaveChangesAsync();
+
 
                 return new SuccessResult(Messages.Updated);
             }

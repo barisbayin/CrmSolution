@@ -44,7 +44,6 @@ namespace Business.Handlers.Languages.Commands
 
 
                 _languageRepository.Update(isThereLanguageRecord);
-                await _languageRepository.SaveChangesAsync();
                 return new SuccessResult(Messages.Updated);
             }
         }

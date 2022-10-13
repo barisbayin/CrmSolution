@@ -34,7 +34,7 @@ namespace Business.Handlers.Translates.Commands
                 var translateToDelete = _translateRepository.Get(p => p.Id == request.Id);
 
                 _translateRepository.Delete(translateToDelete);
-                await _translateRepository.SaveChangesAsync();
+       
                 return new SuccessResult(Messages.Deleted);
             }
         }

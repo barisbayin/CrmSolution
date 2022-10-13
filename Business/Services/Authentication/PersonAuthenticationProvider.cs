@@ -32,9 +32,9 @@ namespace Business.Services.Authentication
         public override async Task<LoginUserResult> Login(LoginUserCommand command)
         {
             var citizenId = command.AsCitizenId();
-            var user = await _users.Query()
+            var user = _users.GetList()
                 .Where(u => u.CitizenId == citizenId)
-                .FirstOrDefaultAsync();
+                .FirstOrDefault();
 
 
             if (command.IsPhoneValid)

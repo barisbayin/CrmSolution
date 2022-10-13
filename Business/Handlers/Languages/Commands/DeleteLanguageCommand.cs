@@ -34,7 +34,6 @@ namespace Business.Handlers.Languages.Commands
                 var languageToDelete = _languageRepository.Get(p => p.Id == request.Id);
 
                 _languageRepository.Delete(languageToDelete);
-                await _languageRepository.SaveChangesAsync();
                 return new SuccessResult(Messages.Deleted);
             }
         }

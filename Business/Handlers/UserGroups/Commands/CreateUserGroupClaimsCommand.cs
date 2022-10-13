@@ -41,8 +41,6 @@ namespace Business.Handlers.UserGroups.Commands
                     });
                 }
 
-                await _userGroupRepository.SaveChangesAsync();
-
                 return new SuccessResult(Messages.Added);
             }
         }

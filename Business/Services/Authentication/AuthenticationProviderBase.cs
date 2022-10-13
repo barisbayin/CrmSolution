@@ -46,7 +46,6 @@ namespace Business.Services.Authentication
 
             login.IsUsed = true;
             _logins.Update(login);
-            await _logins.SaveChangesAsync();
 
 
             return new SuccessDataResult<DArchToken>(accessToken, Messages.SuccessfulLogin);
@@ -58,10 +57,10 @@ namespace Business.Services.Authentication
 
         protected virtual async Task<LoginUserResult> PrepareOneTimePassword(AuthenticationProviderType providerType, string cellPhone, string externalUserId)
         {
-            var oneTimePassword = await _logins.Query()
+            var oneTimePassword =  _logins.GetList()
                 .Where(m => m.Provider == providerType && m.ExternalUserId == externalUserId && m.IsUsed == false)
-                .Select(m => m.Code)
-                .FirstOrDefaultAsync();
+                .Select(m => m.Code).FirstOrDefault();
+         
             int mobileCode;
             if (oneTimePassword == default)
             {
@@ -80,7 +79,6 @@ namespace Business.Services.Authentication
                         Provider = providerType,
                         IsUsed = false
                     });
-                    await _logins.SaveChangesAsync();
                 }
                 catch
                 {

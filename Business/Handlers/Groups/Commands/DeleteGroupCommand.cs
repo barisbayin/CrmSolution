@@ -32,7 +32,6 @@ namespace Business.Handlers.Groups.Commands
                 var groupToDelete = await _groupRepository.GetAsync(x => x.Id == request.Id);
 
                 _groupRepository.Delete(groupToDelete);
-                await _groupRepository.SaveChangesAsync();
 
                 return new SuccessResult(Messages.Deleted);
             }

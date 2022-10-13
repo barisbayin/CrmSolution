@@ -35,14 +35,19 @@ namespace Business.Fakes.Handlers.OperationClaims
                     Name = request.ClaimName
                 };
                 _operationClaimRepository.Add(operationClaim);
-                await _operationClaimRepository.SaveChangesAsync();
 
                 return new SuccessResult(Messages.Added);
             }
 
             private bool IsClaimExists(string claimName)
             {
-                return _operationClaimRepository.Query().Any(x => x.Name == claimName);
+                var result = _operationClaimRepository.GetAsync(x => x.Name == claimName).Result;
+                if (result != null)
+                {
+                    return true;
+                }
+
+                return false;
             }
         }
     }

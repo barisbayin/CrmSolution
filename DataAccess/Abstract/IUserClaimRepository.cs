@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IUserClaimRepository : IEntityRepository<UserClaim>
+    public interface IUserClaimRepository : IEntityRepository<UserClaim>, IAsyncEntityRepository<UserClaim>
     {
         Task<IEnumerable<SelectionItem>> GetUserClaimSelectedList(int userId);
         Task<IEnumerable<UserClaim>> BulkInsert(int userId, IEnumerable<UserClaim> userClaims);

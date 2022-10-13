@@ -47,7 +47,6 @@ namespace Business.Handlers.Authorizations.Queries
                 var accessToken = _tokenHelper.CreateToken<AccessToken>(userToCheck);
                 userToCheck.RefreshToken = accessToken.RefreshToken;
                 _userRepository.Update(userToCheck);
-                await _userRepository.SaveChangesAsync();
                 return new SuccessDataResult<AccessToken>(accessToken, Messages.SuccessfulLogin);
             }
         }

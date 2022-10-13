@@ -39,7 +39,6 @@ namespace Business.Handlers.Groups.Commands
                         GroupName = request.GroupName
                     };
                     _groupRepository.Add(group);
-                    await _groupRepository.SaveChangesAsync();
                     return new SuccessResult(Messages.Added);
                 }
                 catch (Exception ex)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IUserGroupRepository : IEntityRepository<UserGroup>
+    public interface IUserGroupRepository : IEntityRepository<UserGroup>, IAsyncEntityRepository<UserGroup>
     {
         Task<IEnumerable<SelectionItem>> GetUserGroupSelectedList(int userId);
         Task<IEnumerable<SelectionItem>> GetUsersInGroupSelectedListByGroupId(int groupId);

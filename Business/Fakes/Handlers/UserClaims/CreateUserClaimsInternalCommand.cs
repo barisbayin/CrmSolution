@@ -43,7 +43,7 @@ namespace Business.Fakes.Handlers.UserClaims
                     });
                 }
 
-                await _userClaimsRepository.SaveChangesAsync();
+       
                 return new SuccessResult(Messages.Added);
             }
 

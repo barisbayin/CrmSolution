@@ -38,7 +38,7 @@ namespace Business.Handlers.Groups.Commands
                 };
 
                 _groupRepository.Update(groupToUpdate);
-                await _groupRepository.SaveChangesAsync();
+
                 return new SuccessResult(Messages.Updated);
             }
         }

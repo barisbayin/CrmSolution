@@ -32,7 +32,6 @@ namespace Business.Handlers.UserClaims.Commands
                 var entityToDelete = await _userClaimRepository.GetAsync(x => x.UserId == request.Id);
 
                 _userClaimRepository.Delete(entityToDelete);
-                await _userClaimRepository.SaveChangesAsync();
 
                 return new SuccessResult(Messages.Deleted);
             }

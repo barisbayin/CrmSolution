@@ -40,7 +40,6 @@ namespace Business.Handlers.UserClaims.Commands
                 var userList = request.ClaimId.Select(x => new UserClaim() { ClaimId = x, UserId = request.UserId });
 
                 await _userClaimRepository.BulkInsert(request.UserId, userList);
-                await _userClaimRepository.SaveChangesAsync();
 
                 _cacheManager.Remove($"{CacheKeys.UserIdForClaim}={request.UserId}");
 

@@ -40,7 +40,6 @@ namespace Business.Handlers.GroupClaims.Commands
                     Name = request.ClaimName
                 };
                 _operationClaimRepository.Add(operationClaim);
-                await _operationClaimRepository.SaveChangesAsync();
 
                 return new SuccessResult(Messages.Added);
             }

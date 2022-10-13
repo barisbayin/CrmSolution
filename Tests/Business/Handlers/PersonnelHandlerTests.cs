@@ -96,7 +96,6 @@ namespace Tests.Business.HandlersTest
 			var handler = new CreatePersonnelCommandHandler(_personnelRepository.Object, _mediator.Object);
 			var x = await handler.Handle(command, new System.Threading.CancellationToken());
 
-			_personnelRepository.Verify(x => x.SaveChangesAsync());
 			x.Success.Should().BeTrue();
 			x.Message.Should().Be(Messages.Added);
 		}
@@ -136,7 +135,6 @@ namespace Tests.Business.HandlersTest
 			var handler = new UpdatePersonnelCommandHandler(_personnelRepository.Object, _mediator.Object);
 			var x = await handler.Handle(command, new System.Threading.CancellationToken());
 
-			_personnelRepository.Verify(x => x.SaveChangesAsync());
 			x.Success.Should().BeTrue();
 			x.Message.Should().Be(Messages.Updated);
 		}
@@ -155,7 +153,6 @@ namespace Tests.Business.HandlersTest
 			var handler = new DeletePersonnelCommandHandler(_personnelRepository.Object, _mediator.Object);
 			var x = await handler.Handle(command, new System.Threading.CancellationToken());
 
-			_personnelRepository.Verify(x => x.SaveChangesAsync());
 			x.Success.Should().BeTrue();
 			x.Message.Should().Be(Messages.Deleted);
 		}

@@ -3,7 +3,7 @@ using Core.Entities.Concrete;
 
 namespace DataAccess.Abstract
 {
-    public interface IMobileLoginRepository : IEntityRepository<MobileLogin>
+    public interface IMobileLoginRepository : IEntityRepository<MobileLogin>, IAsyncEntityRepository<MobileLogin>
     {
     }
 }

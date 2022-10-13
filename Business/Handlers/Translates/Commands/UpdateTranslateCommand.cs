@@ -46,7 +46,7 @@ namespace Business.Handlers.Translates.Commands
 
 
                 _translateRepository.Update(isThereTranslateRecord);
-                await _translateRepository.SaveChangesAsync();
+     
                 return new SuccessResult(Messages.Updated);
             }
         }

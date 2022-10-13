@@ -42,10 +42,11 @@ namespace Business.Handlers.Translates.Commands
             [LogAspect(typeof(FileLogger))]
             public async Task<IResult> Handle(CreateTranslateCommand request, CancellationToken cancellationToken)
             {
-                var isThereTranslateRecord = _translateRepository.Query()
-                    .Any(u => u.LangId == request.LangId && u.Code == request.Code);
+                var isThereTranslateRecord =
+                    _translateRepository.GetAsync(u => u.LangId == request.LangId && u.Code == request.Code).Result;
 
-                if (isThereTranslateRecord == true)
+
+                if (isThereTranslateRecord != null)
                 {
                     return new ErrorResult(Messages.NameAlreadyExist);
                 }
@@ -58,7 +59,6 @@ namespace Business.Handlers.Translates.Commands
                 };
 
                 _translateRepository.Add(addedTranslate);
-                await _translateRepository.SaveChangesAsync();
                 return new SuccessResult(Messages.Added);
             }
         }

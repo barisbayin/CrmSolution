@@ -30,11 +30,11 @@ namespace WebAPI.Controllers
 		public async Task<IActionResult> GetList()
 		{
 			var result = await Mediator.Send(new GetPersonnelsQuery());
-			if (result.Success)
+			if (result!=null)
 			{
-				return Ok(result.Data);
+				return Ok(result);
 			}
-			return BadRequest(result.Message);
+			return BadRequest();
 		}
 
 		///<summary>
@@ -69,11 +69,11 @@ namespace WebAPI.Controllers
 		public async Task<IActionResult> Add([FromBody] CreatePersonnelCommand createPersonnel)
 		{
 			var result = await Mediator.Send(createPersonnel);
-			if (result.Success)
+			if (result!=null)
 			{
-				return Ok(result.Message);
+				return Ok(result);
 			}
-			return BadRequest(result.Message);
+			return BadRequest();
 		}
 
 		/// <summary>

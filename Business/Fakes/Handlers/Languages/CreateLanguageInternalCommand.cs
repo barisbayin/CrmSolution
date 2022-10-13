@@ -37,9 +37,9 @@ namespace Business.Fakes.Handlers.Languages
             [CacheRemoveAspect()]
             public async Task<IResult> Handle(CreateLanguageInternalCommand request, CancellationToken cancellationToken)
             {
-                var isThereLanguageRecord = _languageRepository.Query().Any(u => u.Name == request.Name);
+                var isThereLanguageRecord = _languageRepository.GetAsync(u => u.Name == request.Name);
 
-                if (isThereLanguageRecord)
+                if (isThereLanguageRecord.Result != null)
                 {
                     return new ErrorResult(Messages.NameAlreadyExist);
                 }
@@ -51,7 +51,6 @@ namespace Business.Fakes.Handlers.Languages
                 };
 
                 _languageRepository.Add(addedLanguage);
-                await _languageRepository.SaveChangesAsync();
                 return new SuccessResult(Messages.Added);
             }
         }

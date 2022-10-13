@@ -36,7 +36,6 @@ namespace Business.Handlers.OperationClaims.Commands
                 isOperationClaimExists.Description = request.Description;
 
                 _operationClaimRepository.Update(isOperationClaimExists);
-                await _operationClaimRepository.SaveChangesAsync();
 
                 return new SuccessResult(Messages.Updated);
             }

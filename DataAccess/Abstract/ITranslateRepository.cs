@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface ITranslateRepository : IEntityRepository<Translate>
+    public interface ITranslateRepository : IEntityRepository<Translate>, IAsyncEntityRepository<Translate>
     {
         Task<List<TranslateDto>> GetTranslateDto();
         Task<Dictionary<string, string>> GetTranslateWordList(string lang);

@@ -65,7 +65,6 @@ namespace Business.Handlers.Users.Commands
                 };
 
                 _userRepository.Add(user);
-                await _userRepository.SaveChangesAsync();
                 return new SuccessResult(Messages.Added);
             }
         }

@@ -31,7 +31,6 @@ namespace Business.Handlers.OperationClaims.Commands
             {
                 var claimToDelete = await _operationClaimRepository.GetAsync(x => x.Id == request.Id);
                 _operationClaimRepository.Delete(claimToDelete);
-                await _operationClaimRepository.SaveChangesAsync();
 
                 return new SuccessResult(Messages.Deleted);
             }
